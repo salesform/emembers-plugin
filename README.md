@@ -26,3 +26,23 @@ kell írni.
 - ismétlődő fizetés:
   - OTP SIMPLE: http://www.rendelesiurlap.hu/cikk/otp-simple-online-bankkartyas-fizeteshez-online-szerzodeskotes-lepesei
   - CIB bank: http://www.rendelesiurlap.hu/cikk/cib-online-bankkartya-fizeteshez-a-szerzodes-menete
+
+# Telepítés:
+
+- a fájl letöltöd és felteszed a tárhelyed fő mappájába
+- megnyitod szerkesztésre és megadod
+     - A domain nevet, ahova telepítetted az ememberst
+     - Az ememberstől kapott api kulcsot
+- A SalesForm admin felületén beállítod a ismétlődő fizetéses csomaghoz a webhooknak ennek a fájlnak az elérhetőségét. Vagyis ha a www.facebookreklam.hu domainen fut a klubtagság, akkor ezt: www.facebookreklam.hu/emembers-lugin-os.php
+
+# Így teszteld:
+
+- Csinálj egy 1 napos ismétlődő fizetést
+- állítsd tesztre a terméket
+- Adj le egy teszt rendelést
+- be kell kerülnie a rendszerbe
+- majd a következő vonásnál másnap, emelkednie kell a jogosultság szintnek
+
+# Support:
+
+hello-kukac-salesform.hu
