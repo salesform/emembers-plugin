@@ -26,6 +26,14 @@ kell írni.
 - ismétlődő fizetés:
   - OTP SIMPLE: http://www.rendelesiurlap.hu/cikk/otp-simple-online-bankkartyas-fizeteshez-online-szerzodeskotes-lepesei
   - CIB bank: http://www.rendelesiurlap.hu/cikk/cib-online-bankkartya-fizeteshez-a-szerzodes-menete
+  
+# Hozzáféré kiküldése automatikusan  
+
+- A rendeléskor megadott e-mail cím lesz a felhasználónév
+- A rendelés azonosítója (trid) lesz a jelszó.
+
+Ezeket az adatokat átadjuk minden hírlevélküldőnek is, így a rendelés leadásakor egyből tudsz is küldeni neki egy levelet, amiben benne vannak az adatok.
+
 
 # Telepítés:
 
