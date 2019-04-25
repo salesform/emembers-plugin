@@ -6,7 +6,7 @@ $data = json_decode($_POST['data'], true);
 
 # Ide kerül az emember-től kapott adat
 $secretKey = "";
-#erre a domain névre került az emembers
+# erre a domain névre került az emembers
 $domain = "";
 
 
@@ -49,13 +49,15 @@ if ($data["status"]=="true") {
 	
 	} else {
 		
-		$name = split_name($data["name"]);
+		$name = explode(" ",$data["name"]);
 			
 		$postdata = array (
 			"first_name" => $name[0],
 			"last_name" => $name[1],
 			"email" => $data["email"],
-			"membership_level_id" => 3
+			"membership_level_id" => 3,
+			"username" => $data["email"],
+			"password" => $data["trid"]
 		);
 		
 		$create = posteMember("http://".$domain."/wp-content/plugins/wp-eMember/api/create.php",$postdata);
@@ -83,13 +85,6 @@ function posteMember($url,$postdata) {
 	$response=curl_exec ($ch); 
 	curl_close ($ch);
 	return $response;
-}
-
-function split_name($name) {
-    $name = trim($name);
-    $last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
-    $first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
-    return array($first_name, $last_name);
 }
 		
 ?>
