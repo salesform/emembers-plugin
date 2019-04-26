@@ -5,9 +5,9 @@ header('Content-Type: text/html; charset=utf-8');
 $data = json_decode($_POST['data'], true);	
 
 # Ide kerül az emember-től kapott adat
-$secretKey = "";
+$secretKey = "5abe107956145";
 # erre a domain névre került az emembers
-$domain = "";
+$domain = "vip.payperclick.hu";
 
 
 ###################################################################
@@ -16,6 +16,7 @@ $domain = "";
 ##				Innen lefele már ne módosíts semmit				 ##
 ##																 ##
 ###################################################################	
+
 if ($data["status"]=="true") {
 	
 	$postdata = array (
@@ -30,7 +31,9 @@ if ($data["status"]=="true") {
 		
 		if ($user->account_state!="active") {
 			$postdata = array (
+				"secret_key" => $secretKey,
 				"account_state" => "active",
+				"member_id" => "",
 				"email" => $data["email"]
 			);
 			
@@ -38,12 +41,13 @@ if ($data["status"]=="true") {
 		}
 		
 		$postdata = array (
+			"secret_key" => $secretKey,
 			"member_id" => $user->member_id,
 			"email" => $data["email"],
-			"membership_level_id" => $user->membership_level+1
+			"membership_level_id" => $user->member_data->membership_level+1
 		);
 		
-		if ($user->membership_level==6) $postdata["membership_level_id"]=6;
+		if ($user->member_data->membership_level==6) $postdata["membership_level_id"]=6;
 		
 		$update = posteMember("http://".$domain."/wp-content/plugins/wp-eMember/api/update.php",$postdata);
 	
@@ -52,39 +56,45 @@ if ($data["status"]=="true") {
 		$name = explode(" ",$data["name"]);
 			
 		$postdata = array (
+			"secret_key" => $secretKey,
 			"first_name" => $name[0],
 			"last_name" => $name[1],
 			"email" => $data["email"],
 			"membership_level_id" => 3,
+			"membership_level_name" => "",
 			"username" => $data["email"],
 			"password" => $data["trid"]
 		);
 		
 		$create = posteMember("http://".$domain."/wp-content/plugins/wp-eMember/api/create.php",$postdata);
-	
+		
 	}
 
 } else {
 	
 	$postdata = array (
+		"secret_key" => $secretKey,
+		"member_id" => "",
 		"account_state" => "inactive",
 		"email" => $data["email"]
 	);
 		
 	$deactive = posteMember("http://".$domain."/wp-content/plugins/wp-eMember/api/deactivate.php",$postdata);
-
+	
 }
 
 function posteMember($url,$postdata) {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 	curl_setopt($ch, CURLOPT_URL,$url);
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postdata));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+	curl_setopt($ch, CURLOPT_POST,1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($postdata));
+	curl_setopt($ch, CURLOPT_USERAGENT, "SF WebHook");
 	$response=curl_exec ($ch); 
 	curl_close ($ch);
 	return $response;
 }
+
 		
 ?>
