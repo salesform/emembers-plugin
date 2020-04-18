@@ -41,7 +41,7 @@ Ezeket az adatokat átadjuk minden hírlevélküldőnek is, így a rendelés lea
 - megnyitod szerkesztésre és megadod
      - A domain nevet, ahova telepítetted az ememberst
      - Az ememberstől kapott api kulcsot
-- A SalesForm admin felületén beállítod a ismétlődő fizetéses csomaghoz a webhooknak ennek a fájlnak az elérhetőségét. Vagyis ha a www.facebookreklam.hu domainen fut a klubtagság, akkor ezt: www.facebookreklam.hu/emembers-lugin-os.php
+- A SalesForm admin felületén beállítod a ismétlődő fizetéses csomaghoz a webhooknak ennek a fájlnak az elérhetőségét. Vagyis ha a www.facebookreklam.hu domainen fut a klubtagság, akkor ezt: www.facebookreklam.hu/webhook_emember-os.php
 
 # Így teszteld:
 
