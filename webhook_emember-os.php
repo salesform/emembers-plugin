@@ -5,9 +5,9 @@ header('Content-Type: text/html; charset=utf-8');
 $data = json_decode($_POST['data'], true);	
 
 # Ide kerül az emember-től kapott adat
-$secretKey = "5abe107956145";
+$secretKey = "";
 # erre a domain névre került az emembers
-$domain = "vip.payperclick.hu";
+$domain = "";
 
 
 ###################################################################
@@ -24,7 +24,7 @@ if ($data["status"]=="true") {
 		"email" => $data["email"]
 	);
 	
-	$query = posteMember("http://".$domain."/wp-content/plugins/wp-eMember/api/query.php",$postdata);
+	$query = posteMember("https://".$domain."/wp-content/plugins/wp-eMember/api/query.php",$postdata);
 	$user = json_decode($query);
 	
 	if ($user->member_id!="") {
@@ -37,7 +37,7 @@ if ($data["status"]=="true") {
 				"email" => $data["email"]
 			);
 			
-			$active = posteMember("http://".$domain."/wp-content/plugins/wp-eMember/api/deactivate.php",$postdata);
+			$active = posteMember("https://".$domain."/wp-content/plugins/wp-eMember/api/deactivate.php",$postdata);
 		}
 		
 		$postdata = array (
@@ -49,7 +49,7 @@ if ($data["status"]=="true") {
 		
 		if ($user->member_data->membership_level==6) $postdata["membership_level_id"]=6;
 		
-		$update = posteMember("http://".$domain."/wp-content/plugins/wp-eMember/api/update.php",$postdata);
+		$update = posteMember("https://".$domain."/wp-content/plugins/wp-eMember/api/update.php",$postdata);
 	
 	} else {
 		
@@ -66,7 +66,7 @@ if ($data["status"]=="true") {
 			"password" => $data["trid"]
 		);
 		
-		$create = posteMember("http://".$domain."/wp-content/plugins/wp-eMember/api/create.php",$postdata);
+		$create = posteMember("https://".$domain."/wp-content/plugins/wp-eMember/api/create.php",$postdata);
 		
 	}
 
@@ -79,7 +79,7 @@ if ($data["status"]=="true") {
 		"email" => $data["email"]
 	);
 		
-	$deactive = posteMember("http://".$domain."/wp-content/plugins/wp-eMember/api/deactivate.php",$postdata);
+	$deactive = posteMember("https://".$domain."/wp-content/plugins/wp-eMember/api/deactivate.php",$postdata);
 	
 }
 
