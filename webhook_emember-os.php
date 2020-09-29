@@ -6,7 +6,7 @@ $data = json_decode($_POST['data'], true);
 
 # Ide kerül az emember-től kapott adat
 $secretKey = "";
-# erre a domain névre került az emembers
+# erre a domain névre került az emembers hhtps:// és www nélkül
 $domain = "";
 
 
