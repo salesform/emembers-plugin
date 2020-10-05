@@ -8,6 +8,8 @@ $data = json_decode($_POST['data'], true);
 $secretKey = "";
 # erre a domain névre került az emembers hhtps:// és www nélkül
 $domain = "";
+# ide jön a membership level id
+$membership_level_id = "";
 
 
 ###########################################################################
@@ -60,7 +62,7 @@ if ($data["status"]=="true") {
 			"first_name" => $name[0],
 			"last_name" => $name[1],
 			"email" => $data["email"],
-			"membership_level_id" => 3,
+			"membership_level_id" => $membership_level_id,
 			"membership_level_name" => "",
 			"username" => $data["email"],
 			"password" => $data["trid"]
