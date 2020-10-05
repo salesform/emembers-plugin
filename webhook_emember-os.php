@@ -4,11 +4,11 @@ header('Content-Type: text/html; charset=utf-8');
 
 $data = json_decode($_POST['data'], true);	
 
-# Ide kerül az emember-től kapott adat
+# Ide kerül az emember-től kapott titkos kulcs
 $secretKey = "";
 # erre a domain névre került az emembers hhtps:// és www nélkül
 $domain = "";
-# ide jön a membership level id
+# ide jön a membership level id, ez egy szám
 $membership_level_id = "";
 
 
